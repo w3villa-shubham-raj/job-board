@@ -1,0 +1,17 @@
+<%= render partial: "navbar" %>
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th>Job Title</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @job_applications.each do |job| %>
+      <tr>
+        <td><%= job.name %></td>
+        <td><%= link_to "view", job_path(job)%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

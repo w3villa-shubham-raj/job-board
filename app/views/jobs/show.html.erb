@@ -1,0 +1,40 @@
+<%# <%binding.pry %> 
+<div class="container">
+  <div class="alert alert-success"><%= notice %></div>
+
+  <table class="table table-striped my-3">
+    <tbody>
+      <tr>
+        <th>Job Title:</th>
+        <td><%= @job.name %></td>
+      </tr>
+      <tr>
+        <th>Job Description:</th>
+        <td><%= @job.description %></td>
+      </tr>
+      <tr>
+        <th>Job Location:</th>
+        <td><%= @job.total_post %></td>
+      </tr>
+      <tr>
+        <th>Job Type:</th>
+        <td><%= @job.ctc %></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+<% if current_user.jobs.present? && current_user.jobs.pluck(:id).include?(@job.id) %>
+    <p>Already applied</p>
+  <% else %>
+  <%= form_tag job_application_path, method: :post do %>
+  <%= hidden_field_tag :job_id, @job.id %>
+  <%= hidden_field_tag :user_id, current_user.id %>
+  <%= submit_tag "Apply" %>
+<% end %>
+<% end %>
+
+    
+
+  
+</div>

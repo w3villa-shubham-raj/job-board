@@ -1,0 +1,29 @@
+<h1>created Jobs</h1>
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th>Job Title</th>
+      <th>Description</th>
+      <th>Location</th>
+      <th>Type</th>
+      <th colspan="3">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @applied_jobs.each do |job| %>
+      <tr>
+        <td><%= job.name %></td>
+        <td><%= job.description %></td>
+        <td><%= job.total_post %></td>
+        <td><%= job.ctc %></td>
+        <td><%= link_to "View Applied Users", applied_user_path(job)%></td>
+        <td><%= link_to "edit", edit_job_path(job) %></td>
+        <td> <%= button_to "Delete",job_path(job), method: :delete, data: { confirm: "Are you sure?" } %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<%= link_to "New job", new_job_path %>

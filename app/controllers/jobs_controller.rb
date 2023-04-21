@@ -1,6 +1,6 @@
 class JobsController < ApplicationController
   before_action :set_job, only: %i[  edit update destroy  ]
-
+before_action :check_user_role, only: %i[ new edit update destroy  ]
   def index
     @jobs = Job.all
   end
@@ -74,7 +74,7 @@ class JobsController < ApplicationController
     end
 
     def job_params
-      params.require(:job).permit(:name, :description, :total_post, :ctc)
+      params.require(:job).permit(:name, :description, :total_post, :ctc,:created_by,:active)
     end
 
     def job_applications_params

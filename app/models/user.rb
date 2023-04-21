@@ -4,6 +4,13 @@ class User < ApplicationRecord
          :validatable
   has_many :jobs_applications
   has_many :jobs, through: :jobs_applications
+  has_many :messages
+
+
+  validates_uniqueness_of :username
+  scope :all_except, ->(user) { where.not(id: user)}
+  after_create_commit { broadcast_append_to "users" }
+
   # attr_writer :login
 
 

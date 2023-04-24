@@ -1,7 +1,5 @@
 <div class="container">
-  <div class="alert alert-success"><%= notice %></div>
-
-  <table class="table table-striped my-3">
+  <table class="table table-hover">
     <tbody>
       <tr>
         <th>Job Title:</th>
@@ -29,7 +27,7 @@
       <%= form_tag job_application_path, method: :post do %>
         <%= hidden_field_tag :job_id, @job.id %>
         <%= hidden_field_tag :user_id, current_user.id %>
-        <%= submit_tag "Apply" %>
+        <%= submit_tag "Apply",class:"btn btn-success" %>
       <% end %>
     <% end %>
     <% else %>

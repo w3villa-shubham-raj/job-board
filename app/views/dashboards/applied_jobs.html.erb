@@ -1,5 +1,8 @@
-<h1>Applied Jobs</h1>
-<table class="table table-striped">
+<div class="container">
+<div class="row">
+<h3>Applied Jobs</h1>
+<br>
+<table class="table  table-hover">
   <thead class="thead-dark">
     <tr>
       <th>Sr.no</th>
@@ -15,12 +18,10 @@
       <td><%= i= i+1%></td>
         <td><%= job_name(job.job_id).name %></td>
         <td><%= job.created_at.strftime("%d/%m/%Y") %></td>
-        <td><%= link_to "view", job_path(job.job_id)%></td>
-
+        <td><%= link_to "view", job_path(job.job_id),class:"btn btn-primary"%></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-
-<%= link_to "New job", new_job_path %>
+</div>
+</div>

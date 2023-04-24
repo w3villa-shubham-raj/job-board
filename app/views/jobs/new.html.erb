@@ -1,9 +1,45 @@
-<h1>New job</h1>
+<h3 class="text-center mt-3">Create New job</h3>
+<%= form_with model: @job,url:jobs_path do |form|%>
+<div class="form-group">
+        <%= form.label :company_name, class: "form-label" %>
+        <%= form.text_field :company_name, class: "form-control" %>
+      </div>
 
-<%= render "form", job: @job %>
+      <div class="form-group">
+        <%= form.label :name, id:"name-label" ,class:"row-label" %>
+        <%= form.text_field :name, class: "form-control" %>
+      </div>
 
+      <div class="form-group">
+        <%= form.label :description, class: "form-label" %>
+        <%= form.text_field :description, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :total_post, class: "form-label" %>
+        <%= form.text_field :total_post, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :ctc, class: "form-label" %>
+        <%= form.text_field :ctc, class: "form-control" %>
+      </div>
+
+        <div class="form-group">
+        <%= form.label :image, class: "form-label" %>
+        <%= form.file_field :image, class: "form-control" %>
+      </div>
+
+       <div class="form-group">
+        <%= form.label :active, class: "form-label" %>
+        <%= form.check_box :active,id:"box-windows"%>
+      </div>
+
+        <%= form.hidden_field :created_by, value: current_user.id %>
+
+      <div class="form-group">
+        <%= form.submit "Save", class: "btn btn-primary m-auto" %>
+        <%= link_to "Back", jobs_path,class: "btn btn-danger m-auto" %>
+      </div>
 <br>
-
-<div>
-  <%= link_to "Back to jobs", jobs_path %>
-</div>
+<% end %>

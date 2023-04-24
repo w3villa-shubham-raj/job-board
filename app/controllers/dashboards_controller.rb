@@ -3,7 +3,11 @@ class DashboardsController < ApplicationController
     def index
         @check_admin = current_user.is_admin
         @applied_jobs = Job.where(created_by:current_user)
-        @all_jobs = Job.all
+       if params[:search]
+            @jobs = Job.where("name LIKE ?", "%#{params[:search]}%")
+        else
+            @jobs = Job.all
+        end
     end
 
     def applied_users
@@ -11,6 +15,7 @@ class DashboardsController < ApplicationController
     end
 
     def applied_jobs
+        
          @applied_jobs =  JobsApplication.where(user_id:current_user.id)
     end
 

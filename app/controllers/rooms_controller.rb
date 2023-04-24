@@ -1,26 +1,29 @@
 class RoomsController < ApplicationController
 
-    def index
-        @room = Room.new
-        @current_user = current_user
-        redirect_to '/signin' unless @current_user
-        @rooms = Room.public_rooms
-        @users = User.all_except(@current_user)
-    end
+    before_action :authenticate_user!
 
-    def create
-        @room = Room.create(name: params["room"]["name"])
-    end
+  def index
+    @room = Room.new
+    @rooms = Room.public_rooms
 
-    def show
-        @message = Message.new
-        @single_room = Room.find(params[:id])
-        @messages = @single_room.messages
-        @current_user = current_user
-        @rooms = Room.public_rooms
-        @users = User.all_except(@current_user)
-        @room = Room.new
+    @users = User.all_except(current_user)
+    render 'index'
+  end
 
-        render "index"
-    end
+  def show
+    @single_room = Room.find(params[:id])
+
+    @room = Room.new
+    @rooms = Room.public_rooms
+
+    @message = Message.new
+    @messages = @single_room.messages.order(created_at: :asc)
+
+    @users = User.all_except(current_user)
+    render 'index'
+  end
+
+  def create
+    @room = Room.create(name: params['room']['name'])
+  end
 end

@@ -4,13 +4,10 @@ class MessagesController < ApplicationController
         @job_applications = current_user.jobs   
     end
 
-    def create
-        @current_user = current_user
-        @message = @current_user.messages.create(content: msg_params[:content], room_id: params[:room_id])
+     def create
+        @message = current_user.messages.create(content: msg_params[:content], room_id: params[:room_id])
     end
-
     private
-
     def msg_params
         params.require(:message).permit(:content)
     end

@@ -1,0 +1,9 @@
+<div class="container" data-controller="hello-world">
+    <div class="row">
+        <% if current_user && current_user.is_admin %>
+        <%= render  'admin_post' %>
+        <% else %>
+        <%= render  'user_post' %>
+        <% end %>
+    </div>
+</div

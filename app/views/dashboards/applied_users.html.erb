@@ -1,0 +1,25 @@
+<div class="container">
+<div class="row">
+<h1>Applied Users</h1>
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th>User Name</th>
+      <th>Applied On</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @applied_jobs.jobs_applications.each do |user| %>
+      <tr>
+        <td><%= user_name(user.id).username   %></td>
+       <td><%=user.created_at.strftime("%d/%m/%Y") %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<%= link_to "New job", new_job_path,class:"btn btn-primary" %>
+</div>
+
+

@@ -1,0 +1,16 @@
+<% @applied_jobs.each do |job| %>
+<article class="job-card m-auto">
+  <div class="company-logo-img">
+    <%= image_tag job.image.present? ? url_for(job.image) : "https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8&w=1000&q=80" %>
+  </div>
+  <div class="job-title"><%= job.name %></div>
+  <div class="company-name">W3villa</div>
+  <div class="skills-container">
+    <div class="skill">Photoshop</div>
+    <div class="skill">Illustrator</div>
+    <div class="skill">HTML</div>
+  </div>
+  <%= link_to "View Applied Users", applied_user_path(job),class:"apply btn btn-primary"%>
+</article>
+    <% end %>
+

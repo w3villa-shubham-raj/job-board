@@ -1,16 +1,18 @@
 <table class="table table-striped">
   <thead class="thead-dark">
     <tr>
+      <th>Company name</th>
       <th>Job Title</th>
       <th>Description</th>
       <th>Location</th>
-      <th>Type</th>
+      <th>Type</th>    
       <th colspan="3">Action</th>
     </tr>
   </thead>
   <tbody>
     <% @jobs.each do |job| %>
       <tr>
+        <td><%= job.&company_name %></td>
         <td><%= job.name %></td>
         <td><%= job.description %></td>
         <td><%= job.total_post %></td>

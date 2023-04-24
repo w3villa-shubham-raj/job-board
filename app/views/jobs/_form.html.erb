@@ -1,6 +1,9 @@
-<div class="container">
- <div class="card col-md-6">
-  <div class="card-body">
+<link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@700&family=Montserrat&display=swap" rel="stylesheet">
+<div id="survey-container">
+  <form id="survey-form">
+<div class="">
+ <div class="m-auto">
+  <div class="m-auto">
     <%= form_with(model: job, class: "form") do |form| %>
       <% if job.errors.any? %>
         <div class="alert alert-danger">
@@ -15,7 +18,12 @@
       <% end %>
 
       <div class="form-group">
-        <%= form.label :name, class: "form-label" %>
+        <%= form.label :company_name, class: "form-label" %>
+        <%= form.text_field :company_name, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :name, id:"name-label" ,class:"row-label" %>
         <%= form.text_field :name, class: "form-control" %>
       </div>
 
@@ -34,10 +42,25 @@
         <%= form.text_field :ctc, class: "form-control" %>
       </div>
 
-      <div class="form-group">
-        <%= form.submit "Save", class: "btn btn-primary" %>
+        <div class="form-group">
+        <%= form.label :image, class: "form-label" %>
+        <%= form.file_field :image, class: "form-control" %>
       </div>
+
+       <div class="form-group">
+        <%= form.label :active, class: "form-label" %>
+        <%= form.check_box :active,id:"box-windows"%>
+      </div>
+
+        <%= form.hidden_field :created_by, value: current_user.id %>
+
+      <div class="form-group">
+        <%= form.submit "Save", class: "btn btn-primary m-auto" %>
+        <%= link_to "Back", jobs_path,class: "btn btn-danger m-auto" %>
+      </div>
+
   <% end %>
    </div>
   </div>
+</div>
 </div>

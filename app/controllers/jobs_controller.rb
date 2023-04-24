@@ -11,9 +11,8 @@ def show
 
   def job_application
     job_application = JobsApplication.new(job_applications_params)
-
       if job_application.save
-        redirect_to job_path(job)
+        redirect_to job_path(job_application.job)
       else
         render :new
       end

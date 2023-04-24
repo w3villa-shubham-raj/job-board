@@ -12,7 +12,7 @@
   <tbody>
     <% @jobs.each do |job| %>
       <tr>
-        <td><%= job.&company_name %></td>
+        <td><%= job.company_name%><%=job.company_name ? job.company_name : "W3villa" %></td>
         <td><%= job.name %></td>
         <td><%= job.description %></td>
         <td><%= job.total_post %></td>
